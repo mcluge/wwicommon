@@ -1,11 +1,18 @@
 {
     "name": "wwi/common",
     "version": "1.0.0",
+    "keywords": ["util", "dbug", "Globals"],
+	"homepage": "https://github.com/mcluge/wwicommon",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Michael Pearson"
+		}
+	],
     "autoload": {
         "psr-0": {
             "WWICommon\\": "lib/"
-        }
+        },
+        "files": ["lib/functions.php"]
     }
-
-
 }
