@@ -1,5 +1,5 @@
 {
-    "name": "wwi/common",
+    "name": "wwi/wwicommon",
     "version": "1.0.0",
     "keywords": ["util", "dbug", "Globals"],
 	"homepage": "https://github.com/mcluge/wwicommon",

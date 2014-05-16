@@ -1,5 +1,5 @@
 <?php
-namespace WWICommons;
+namespace WWICommon;
 
 class Globals{
 
