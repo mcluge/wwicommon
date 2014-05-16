@@ -9,6 +9,11 @@ class Globals{
 
 	public static function get($prop)
 	{
+
+	}
+
+	public static function set($prop,$value)
+	{
 		
 	}
 
