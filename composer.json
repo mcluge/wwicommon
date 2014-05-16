@@ -1,5 +1,5 @@
 {
-    "name": "WWI/Common",
+    "name": "wwi/common",
     "version": "1.0.0",
     "autoload": {
         "psr-0": {
