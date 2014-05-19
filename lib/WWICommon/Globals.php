@@ -3,13 +3,6 @@ namespace WWICommon;
 
 class Globals{
 
-	/*
-	Required variables
-	db
-	Config
-	AppicationPath
-	 */
-
     public static function set($name, $value)
     {
         $GLOBALS[$name] = $value;
