@@ -31,24 +31,31 @@ class SchemaBuilder{
 	}
 
 	private function parseRelations(){
-
+		//dbug($this->schema);
 		//Add constraints
 		foreach($this->schema as $table => $values){
+			$tables = array("user_profile_has_company","user_profile");
+
+			if(in_array($table, $tables)){
+				//dbug($values["TMP"]);
+			}
 
 			foreach($values["TMP"] as $constraints){
-				$this->schema[$table]['CONSTRAINTS'][$constraints['COLUMN_NAME']] = array(
+				$this->schema[$table]['CONSTRAINTS'][] = array(
 					"REFERENCED_TABLE_NAME" => (($constraints['REFERENCED_TABLE_NAME'])?:null), 
 					"REFERENCED_COLUMN_NAME" => (($constraints['REFERENCED_COLUMN_NAME'])?:null) , 
 					"TABLE_TYPE" => ((!empty($this->schema[$constraints['REFERENCED_TABLE_NAME']]['TYPE']))? $this->schema[$constraints['REFERENCED_TABLE_NAME']]['TYPE'] :null),
 					"RELATION" => (!empty($this->schema[$constraints['REFERENCED_TABLE_NAME']]['definition'][$constraints['REFERENCED_COLUMN_NAME']]['Key']) && $this->schema[$constraints['REFERENCED_TABLE_NAME']]['definition'][$constraints['REFERENCED_COLUMN_NAME']]['Key'] == "PRI" )?"ONE2ONE":"ONE2MANY"
 					 );
-				$this->schema[$constraints['REFERENCED_TABLE_NAME']]['CONSTRAINTS'][$constraints['REFERENCED_COLUMN_NAME']] = array(
+				$this->schema[$constraints['REFERENCED_TABLE_NAME']]['CONSTRAINTS'][] = array(
 					"REFERENCED_TABLE_NAME" => $table, 
 					"REFERENCED_COLUMN_NAME" => $constraints['COLUMN_NAME'] , 
 					"TABLE_TYPE" => ((!empty($this->schema[$table]['TYPE']))? $this->schema[$table]['TYPE'] :null),
 					"RELATION" => (!empty($this->schema[$constraints['REFERENCED_TABLE_NAME']]['definition'][$constraints['REFERENCED_COLUMN_NAME']]['Key']) && $this->schema[$constraints['REFERENCED_TABLE_NAME']]['definition'][$constraints['REFERENCED_COLUMN_NAME']]['Key'] == "PRI" )?"ONE2MANY":"ONE2ONE"
 				);
-
+				if(in_array($table, $tables)){
+					//dbug($this->schema[$constraints['REFERENCED_TABLE_NAME']]['CONSTRAINTS']);
+				}
 			}
 	
 			unset($this->schema[$table]['TMP']);

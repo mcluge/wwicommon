@@ -17,9 +17,17 @@
 
 			}else{
 				echo "<pre>";
+				echo "DBUG called line ".$tr[$level]['line']." of ".$tr[$level]['file']."\n";
+
 				var_export( func_get_args() )."\n";
 				echo "</pre>";
 			}
 
+		}
+	}
+	
+	if(!function_exists("camelize")){
+		function camelize($word) {
+			return preg_replace('/(^|_)([a-z])/e', 'strtoupper("\\2")', $word);
 		}
 	}
