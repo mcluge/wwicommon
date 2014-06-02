@@ -807,7 +807,7 @@ class StarkOrm{
 				$sth = $this->dbh_query_bind($sql, $values);
 
 				###  Get the data and convert it into an array of objects...
-				$data = $sth->fetchAll(PDO::FETCH_ASSOC);
+				$data = $sth->fetchAll(\PDO::FETCH_ASSOC);
 			}
 
             if(empty($rel['use'])){
@@ -884,7 +884,7 @@ class StarkOrm{
 				$sth = $this->dbh_query_bind($sql, $values);
 
 				###  Get the data and convert it into an array of objects...
-				$data = $sth->fetchAll(PDO::FETCH_ASSOC);
+				$data = $sth->fetchAll(\PDO::FETCH_ASSOC);
 			}
 
             if(empty($rel['use'])){

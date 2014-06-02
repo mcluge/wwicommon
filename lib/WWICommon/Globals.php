@@ -73,6 +73,7 @@ class Globals{
 								'foreign_table'                   => $foreign_table,                      # The final table of the object we will be getting
 								'join_table'                      => $value->REFERENCED_TABLE_NAME,                 # The in-between table that has both pKeys
 								'foreign_table_pkey'              => $primary_key,                   # The pKey of the final table (NOTE: can be THIS table's pKey)
+								'pkey_columns_in_join_table'      => $value->REFERENCED_COLUMN_NAME
 								);
 					}
 
@@ -80,6 +81,7 @@ class Globals{
 				
 				default:
 					if(empty($relations[$value->REFERENCED_TABLE_NAME])){
+						
 						if($value->RELATION = 'ONE2ONE'){
 
 							$relations[ camelize($value->REFERENCED_TABLE_NAME)] = array( 
@@ -88,12 +90,13 @@ class Globals{
 								'columns'      => $value->REFERENCED_COLUMN_NAME, 
 							);
 						}else if($value->RELATION = 'ONE2MANY'){
+						
 							$relations[camelize($value->REFERENCED_TABLE_NAME)] = array( 
 								'relationship'        => 'has_many',
 								'use'                 => $config['wwicommon']['modelNamespace'].ucfirst(camelize($value->REFERENCED_TABLE_NAME)),
 								'foreign_table'       => $value->REFERENCED_TABLE_NAME,
 								'foreign_key_columns' => $value->REFERENCED_COLUMN_NAME,
-								'foreign_table_pkey'  => array('class_id','student_id'),
+								'foreign_table_pkey'  => 'id',
 							);
 
 
